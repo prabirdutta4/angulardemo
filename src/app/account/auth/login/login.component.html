@@ -1,0 +1,100 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <span></span>
+    <div class="spacer"></div>
+ 
+</div>
+ <div class="account-pages my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-body p-0">
+			<div class="row">
+              <div class="col-md-12 p-5" style="padding-top:0px !important;">
+			   <app-ui-preloader [display]="loading"></app-ui-preloader>
+				<h6 class="h5 mb-0 mt-4">Welcome back!</h6>
+                <p class="text-muted mt-1 mb-4">Enter your email address and password to
+                  access.</p>
+
+                <form class="authentication-form" name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+				 <ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+                  <div class="form-group">
+                    <label class="form-control-label">User Name</label>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="icon-dual" data-feather="mail" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="email" id="email" name="email" placeholder="Enter your username"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Username is required</div>
+                       
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-4">
+                    <label class="form-control-label">Password</label>
+                    <a 
+                      class="float-right text-muted text-unline-dashed ml-1">Forgot your
+                      password?</a>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i data-feather="lock" class="icon-dual" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" formControlName="password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required />
+						 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                      <label class="custom-control-label" for="checkbox-signin">Remember
+                        me</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-0 text-center">
+                    <button class="btn btn-primary btn-block" type="submit"> Log In
+                    </button>
+                  </div>
+                </form>
+               
+              </div>
+          
+            </div>
+
+          </div> <!-- end card-body -->
+        </div>
+        <!-- end card -->
+
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <p class="text-muted">Don't have an account? <a  routerLink="/signup"
+                class="text-primary font-weight-bold ml-1">Sign Up</a></p>
+          </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+
+      </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
+
+
+

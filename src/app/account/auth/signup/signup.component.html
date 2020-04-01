@@ -1,0 +1,147 @@
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  />
+  <span></span>
+    <div class="spacer"></div>
+ 
+</div>
+<div class="account-pages my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="card">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-12 p-5" style="padding-top:0px !important;">
+				<h6 class="h5 mb-0 mt-4">Create your account</h6>
+                <p class="text-muted mt-1 mb-4">Create a free account and start</p>
+					<form class="authentication-form"  [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+					<!-- <app-ui-preloader [display]="loading"></app-ui-preloader> -->
+					<ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+					<div class="form-group">
+                    <label class="form-control-label">User Name</label>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="icon-dual" data-feather="user" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="name"
+                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="name"
+                        placeholder="Enter Your Username" />
+						 <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Username is required</div>
+                      </div>
+                    </div>
+                  </div>
+				  
+				   <div class="form-group">
+                    <label class="form-control-label">Age</label>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="icon-dual" data-feather="stop-circle" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="number" class="form-control" formControlName="age"
+                        [ngClass]="{ 'is-invalid': submitted && f.age.errors }" id="age"
+                        placeholder="Enter your age" />
+                      <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                        <div *ngIf="f.age.errors.required">Age is required</div>
+                      </div>
+                    </div>
+                  </div>
+				 
+				   <div class="form-group">
+                                    <label class="form-control-label">Gender</label>
+                                    <div class="input-group input-group-merge">
+									  <div class="input-group-prepend">
+										<span class="input-group-text">
+										  <i class="icon-dual" data-feather="users" appFeatherIcon></i>
+										</span>
+									  </div>
+                                        <select class="form-control custom-select" formControlName="gender"
+                        [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" id="gender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+										<div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+										<div *ngIf="f.gender.errors.required">Gender is required</div>
+									  </div>
+                                    </div>
+                                </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label">Email Address</label>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="icon-dual" data-feather="mail" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="email" class="form-control" formControlName="email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="email"
+                        placeholder="Enter your email" />
+                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group ">
+                    <label class="form-control-label">Password</label>
+                    <div class="input-group input-group-merge">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="icon-dual" data-feather="lock" appFeatherIcon></i>
+                        </span>
+                      </div>
+                      <input type="password"  class="form-control" formControlName="password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="password"
+                        placeholder="Enter your password" />
+                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="checkbox-signup" checked>
+                      <label class="custom-control-label" for="checkbox-signup">
+                        I accept <a href="javascript: void(0);">Terms and Conditions</a>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-0 text-center">
+                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+          </div> <!-- end card-body -->
+        </div>
+        <!-- end card -->
+
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <p class="text-muted">Already have account? <a routerLink="/"
+                class="text-primary font-weight-bold ml-1">Login</a></p>
+          </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+
+      </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+</div>
+<!-- end page -->
